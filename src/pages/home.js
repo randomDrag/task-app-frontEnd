@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid, Paper, withStyles, Typography } from '@material-ui/core';
-
+import { FilterHdr } from '@material-ui/icons';
 import useStyle from '../css/Mui.css';
 
 class Home extends React.Component {
@@ -25,24 +25,28 @@ class Home extends React.Component {
 
             <Grid container justify='center' alignContent='center' alignItems='center'>
                 <Paper className={classes.Back_dashboard} variant="elevation" elevation={3} >
-                    <Grid item container >
+                    <Grid className={classes.root} item container justify='center' alignContent='center' alignItems='center' >
 
                         {/* this is Total Trips card */}
-                        <Grid>
-                            <Paper variant="elevation" elevation={5}>
+                        <Grid className={classes.root} item container justify='center' alignContent='center' alignItems='center' md={12}>
+                            <Paper className={classes.totalTripcard} variant="elevation" elevation={5}>
 
-                                <Grid items>
-                                    <Typography>Total Trips</Typography>
+                                <Grid container item direction='row'>
+                                    
+                                        <FilterHdr fontSize='large' />
+                                        <Typography align='center' variant='h5'  >  Total Trips</Typography>
+                                    
+
                                 </Grid>
-                                <Grid items>
-
+                                <Grid item>
+                                <Typography align='center' variant='h6'color  >  45</Typography>
                                 </Grid>
 
                             </Paper>
                         </Grid>
 
                         {/* this is below cards */}
-                        <Grid>
+                        <Grid item container md={12}>
 
                         </Grid>
 
