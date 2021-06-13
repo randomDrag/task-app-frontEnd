@@ -6,7 +6,8 @@ const useStyle = theme => ({
 
 
     root: {
-        height: '100%'
+        height: '100%',
+        width : '100%'
     },
     Mat_Menu: {
         height: '100vh',
@@ -29,12 +30,21 @@ const useStyle = theme => ({
     },
     totalTripcard :{
 
-        height : '30%',
-        width : '30%',
+        height : '80%',
+        width : '40%',
         borderRadius : "20px",
         background : [theme.palette.secondary.main]
 
+    },
+    otherTripcard :{
+        height : '50%',
+        width : '60%',
+        borderRadius : "20px",
+        background : [theme.palette.secondary.main]
+
+
     }
+   
 
 
 

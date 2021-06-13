@@ -4,7 +4,7 @@ import { Add, Home as HomeIcon, ViewList } from '@material-ui/icons';
 import Home from './pages/home';
 import uiTheme from './theme/uiTheme';
 import useStyle from './css/Mui.css'
-
+import AddTrip from './pages/add';
 
 
 
@@ -48,10 +48,11 @@ function App(props) {
 
         {/* other pages of App */}
 
-          <Grid item container  xs={12} md={10} style={{ border: "2px solid red" , }} >
+          <Grid item container justify='center' alignContent='center' alignItems='center' xs={12} md={10} style={{ border: "2px solid red" , }} >
             <Router>
               <Switch>
                 <Route path="/" exact component={Home} />
+                <Route path="/add"  component={AddTrip} />
               </Switch>
             </Router>
           </Grid>
