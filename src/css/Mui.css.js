@@ -92,7 +92,24 @@ const useStyle = theme => ({
 
         }
     }, table: {
-        width: '700px',
+        width: '80%',
+        height: '100%',
+        backgroundColor: [theme.palette.secondary.main],
+        borderRadius: "20px",
+        alignItem: 'center',
+        margin: "auto",
+        [theme.breakpoints.down('xs')]: {
+            width: "95%",
+
+        }
+        
+
+    }, cell: {
+        color: [theme.palette.primary.main],
+        padding : "20px"
+    },
+    AllTripsData:{
+flexFlow : "column"
     }
 
 
