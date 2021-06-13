@@ -99,7 +99,7 @@ class Home extends React.Component {
                     </Grid>
 
                     {/* this is below cards */}
-                    <Grid className={classes.root} item container md={12} style={{ flexFlow: "row", margin: "20px" }} >
+                    <Grid className={classes.belowCardContainer} item container md={12}  >
 
 
 

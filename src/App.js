@@ -6,6 +6,7 @@ import Home from './pages/home';
 import uiTheme from './theme/uiTheme';
 import useStyle from './css/Mui.css'
 import AddTrip from './pages/add';
+import AllTrips from './pages/Alltrips';
 
 
 
@@ -43,10 +44,11 @@ function App(props) {
             </Grid>
 
             <Grid item>
+              <Link to="/All">
               <Fab color="primary" aria-label="all list">
                 <ViewList />
               </Fab>
-
+              </Link>
             </Grid>
 
 
@@ -59,6 +61,7 @@ function App(props) {
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/add" component={AddTrip} />
+                <Route path="/All" component={AllTrips}/>
               </Switch>
             
           </Grid>

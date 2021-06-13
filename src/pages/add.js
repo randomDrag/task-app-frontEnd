@@ -43,7 +43,7 @@ class AddTrip extends React.Component {
         const { classes } = this.props;
 
         return (
-            <Paper className={classes.Back_dashboard} variant="elevation" elevation={3} style={{ width: "30%" }} >
+            <Paper className={classes.addingPage} variant="elevation" elevation={3}  >
 
                 <Grid item container justify="center" alignItems='center' alignContent="center" spacing={5} style={{ padding: "20px" }}>
 
