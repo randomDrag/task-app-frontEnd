@@ -2,7 +2,9 @@ import React from 'react';
 import { Grid, Paper, withStyles, FormControl, TextField, Select, InputLabel , Button } from '@material-ui/core';
 import { Save} from '@material-ui/icons';
 import useStyle from '../css/Mui.css';
-
+import { AddTripData} from '../actions'
+import {connect} from 'react-redux'
+import {useHistory} from 'react-router-dom';
 class AddTrip extends React.Component {
 
     constructor(props) {
@@ -16,13 +18,25 @@ class AddTrip extends React.Component {
             date : ""
         }
 
+     
     }
 
     handleChange(event) {
     
         event.preventDefault();
 
-        console.log(this.state);
+        this.props.AddTripData(this.state)
+
+        this.setState(
+            {
+                type: "",
+                place : "",
+                date : ""
+            }
+        );
+
+      this.props.history.push('/');
+
     };
 
     render() {
@@ -68,10 +82,8 @@ class AddTrip extends React.Component {
                                     <InputLabel htmlFor="outlined-age-native-simple">Type</InputLabel>
                                     <Select
                                         color="secondary"
-                                        helperText="type of trip"
                                         value={this.state.type}
-                                        onChange={ e => { this.setState({type : e.target.value})}}
-                                    >
+                                        onChange={ e => { this.setState({type : e.target.value})}} >
                                         <option aria-label="None" value="" />
                                         <option value="Club">club</option>
                                         <option value="Treaks">Treaks</option>
@@ -112,4 +124,8 @@ class AddTrip extends React.Component {
 }
 
 
-export default withStyles(useStyle)(AddTrip);
+export default withStyles(useStyle)(
+    
+    connect(null , {AddTripData})(AddTrip)
+    
+    );
