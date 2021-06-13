@@ -11,17 +11,18 @@ class AddTrip extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
         this.state = {
-            type: ""
+            type: "",
+            place : "",
+            date : ""
         }
 
     }
 
     handleChange(event) {
-        const name = event.target.name;
-        this.setState({
-            ...this.state,
-            type: event.target.value,
-        });
+    
+        event.preventDefault();
+
+        console.log(this.state);
     };
 
     render() {
@@ -34,7 +35,7 @@ class AddTrip extends React.Component {
 
                     <Grid item>
 
-                        <form onSubmit={ e => { e.preventDefault(); console.log(e)} }>
+                        <form  >
                             <FormControl>
                                 <TextField
                                     id="date"
@@ -43,8 +44,8 @@ class AddTrip extends React.Component {
                                     color="secondary"
                                     margin="normal"
                                     variant="outlined"
-                                    defaultValue="2017-05-24"
-
+                                    onChange={e => this.setState({date : e.target.value})}
+                                    value={this.state.date}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
@@ -58,34 +59,31 @@ class AddTrip extends React.Component {
                                     label="Place"
                                     defaultValue="Delhi"
                                     helperText="city name or place name"
+                                    value={this.state.place}
+                                    onChange={e => this.setState({place : e.target.value})}
                                 />
 
 
                                 <FormControl variant="outlined">
                                     <InputLabel htmlFor="outlined-age-native-simple">Type</InputLabel>
                                     <Select
-                                        label="type"
-
                                         color="secondary"
                                         helperText="type of trip"
                                         value={this.state.type}
-                                        onChange={this.handleChange}
-                                        inputProps={{
-                                            name: 'type',
-                                            id: 'outlined-age-native-simple',
-                                        }}
+                                        onChange={ e => { this.setState({type : e.target.value})}}
                                     >
                                         <option aria-label="None" value="" />
-                                        <option value={10}>Ten</option>
-                                        <option value={20}>Twenty</option>
-                                        <option value={30}>Thirty</option>
+                                        <option value="Club">club</option>
+                                        <option value="Treaks">Treaks</option>
+                                        <option value='Tropics'>Tropics</option>
                                     </Select>
                                 </FormControl>
 
 
                                 <Button
                                 style={{margin : "30px"}}
-                                    type="submit"
+                                   onClick={this.handleChange}
+                                   type="submit"
                                     variant="contained"
                                     color="secondary"
                                     size="large"
