@@ -54,7 +54,7 @@ function App(props) {
 
           {/* other pages of App */}
 
-          <Grid item container justify='center' alignContent='center' alignItems='center' xs={12} md={10} style={{ border: "2px solid red", }} >
+          <Grid item container justify='center' alignContent='center' alignItems='center' xs={12} md={10} >
             
               <Switch>
                 <Route path="/" exact component={Home} />

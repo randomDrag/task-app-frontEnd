@@ -1,4 +1,4 @@
-import { ADD_NEW_TRIP } from './const';
+import { ADD_NEW_TRIP , FETCH_DATA_TRIP} from './const';
 
 
 export const AddTripData = (data) => {
@@ -9,11 +9,22 @@ export const AddTripData = (data) => {
         ...data
     }
 
-  
-
-    return {
+   return {
         type: ADD_NEW_TRIP,
         payload: dat
+    }
+
+}
+
+export const FetchTripData = ()=>{
+
+    const data = localStorage.getItem(ADD_NEW_TRIP)
+
+    return {
+        
+        type : FETCH_DATA_TRIP,
+        payload : JSON.parse(data)
+
     }
 
 }

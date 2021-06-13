@@ -15,16 +15,7 @@ const store = createStore(reducers, {}, compose(applyMiddleware(thunk), window._
 
 //const store = createStore(reducers, {}, applyMiddleware(thunk));
 
-// function loadFromLocalStorage() {
-//   try {
-//     const serialisedState = localStorage.getItem(ADD_NEW_TRIP);
-//     let formData = {}
-//     return formData = {...JSON.parse(serialisedState)};
-//   } catch (e) {
-//     console.warn(e);
-//     return undefined;
-//   }
-// }
+
 
 
 ReactDOM.render(

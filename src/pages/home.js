@@ -1,8 +1,10 @@
 import React from 'react';
 
 import { Grid, Paper, withStyles, Typography } from '@material-ui/core';
-import { FilterHdr, WbSunny } from '@material-ui/icons';
+import { FilterHdr,FreeBreakfast ,WbSunny } from '@material-ui/icons';
 import useStyle from '../css/Mui.css';
+import { connect } from 'react-redux';
+import { FetchTripData } from '../actions'
 
 class Home extends React.Component {
 
@@ -14,19 +16,24 @@ class Home extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.FetchTripData();
+    }
 
     OtherCards(cards) {
         const { classes } = this.props;
 
-         let ico = < cards.icon  color="primary" style={{ padding: "0 10px" }} /> ;
+
+
+        let ico = < cards.icon color="primary" style={{ padding: "0 10px" }} />;
         return (
             <Grid item container justify='center' alignContent='center' alignItems='center'>
 
                 <Paper className={classes.otherTripcard} variant="elevation" elevation={5}>
 
                     <Grid container item justify='center' alignContent='center' alignItems='center' style={{ padding: '10px', flexFlow: 'row' }} >
-                
-                          {ico}
+
+                        {ico}
                         <Typography align='center' variant='h6' color="primary" style={{ fontWeight: "lighter" }} >  {cards.nameType}</Typography>
 
                     </Grid>
@@ -43,7 +50,25 @@ class Home extends React.Component {
 
     render() {
 
-        const { classes } = this.props;
+        const { classes, data } = this.props;
+
+
+        const treaks = data.filter(d => {
+            if (d.type === "Treaks") {
+                return true;
+            }
+        });
+        const Tropics = data.filter(d => {
+            if (d.type === "Tropics") {
+                return true;
+            }
+        });
+
+        const Club = data.filter(d => {
+            if (d.type === "Club") {
+                return true;
+            }
+        })
 
 
         return (
@@ -67,18 +92,20 @@ class Home extends React.Component {
 
                             </Grid>
                             <Grid item>
-                                <Typography align='center' variant='h1' color="primary" style={{ fontWeight: 'normal' }} >  45</Typography>
+                                <Typography align='center' variant='h1' color="primary" style={{ fontWeight: 'normal' }} >  {data.length}</Typography>
                             </Grid>
 
                         </Paper>
                     </Grid>
 
                     {/* this is below cards */}
-                    <Grid className={classes.root} item container md={12}  style={{ flexFlow: "row" , margin: "20px"}} >
+                    <Grid className={classes.root} item container md={12} style={{ flexFlow: "row", margin: "20px" }} >
 
-                    <this.OtherCards nameType="Treaks" value="30" icon={WbSunny}/>
-                    <this.OtherCards nameType="Treaks" value="30" icon={WbSunny}/>
-                    <this.OtherCards nameType="Treaks" value="30" icon={WbSunny}/>
+
+
+                        <this.OtherCards nameType="Treaks" value={treaks.length} icon={WbSunny} />
+                        <this.OtherCards nameType="Tropics" value={Tropics.length} icon={FilterHdr} />
+                        <this.OtherCards nameType="Club" value={Club.length} icon={FreeBreakfast} />
 
                     </Grid>
 
@@ -96,7 +123,17 @@ class Home extends React.Component {
 
 }
 
+const mapStateToProps = (state) => {
+
+    return {
+        data: Object.values(state.formData)
+    };
+
+}
 
 
 
-export default withStyles(useStyle)(Home);
+export default withStyles(useStyle)(
+
+    connect(mapStateToProps, { FetchTripData })(Home)
+);
