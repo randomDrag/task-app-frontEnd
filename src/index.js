@@ -11,9 +11,9 @@ import {ADD_NEW_TRIP} from './actions/const';
 import reducers from './reducer';
 
 /* used for @REDUX DEV TOOLS for debug */
-const store = createStore(reducers, {}, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+//const store = createStore(reducers, {}, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
-//const store = createStore(reducers, {}, applyMiddleware(thunk));
+const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 
 
